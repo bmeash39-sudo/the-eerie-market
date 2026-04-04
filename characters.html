@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meet the Monsters – The Eerie Market</title>
+    <style>
+        body {font-family:'Georgia',serif;background:#0d0d0d;color:#d4d4d4;padding:20px;max-width:900px;margin:0 auto;}
+        h1 {color:#8b4513;text-align:center;margin-top:30px;}
+        .intro {text-align:center;font-style:italic;margin-bottom:40px;}
+        .character-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px;}
+        .card {background:#1a1a1a;border-radius:12px;padding:20px;border-left:4px solid #6b8e23;transition:transform 0.2s;}
+        .card:hover {transform:translateY(-5px);}
+        .card:nth-child(2) {border-left-color:#8b4513;}
+        .card:nth-child(3) {border-left-color:#d4af37;}
+        .card:nth-child(4) {border-left-color:#ff69b4;}
+        .card:nth-child(5) {border-left-color:#9370db;}
+        .card:nth-child(6) {border-left-color:#f5f5dc;}
+        .card:nth-child(7) {border-left-color:#90ee90;}
+        .card h2 {margin-top:0;color:#d4af37;font-size:1.4rem;}
+        .card .role {color:#6b8e23;font-weight:bold;font-size:0.9rem;margin-bottom:10px;}
+        .card .realm {color:#888;font-size:0.85rem;margin-bottom:10px;}
+        .card .desc {font-size:0.95rem;line-height:1.5;}
+        .card .quote {margin-top:15px;padding:10px;background:#252525;border-radius:5px;font-style:italic;}
+        .coming-soon {color:#666;font-style:italic;margin-top:10px;}
+        .nav {text-align:center;margin:20px;}
+        a {color:#8b4513;margin:0 10px;}
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a href="index.html">🏪 Home</a> | <a href="shop.html">🛍️ Shop</a> | <a href="lore.html">📖 Lore</a> | <a href="quiz.html">🔮 Quiz</a> | <a href="slot.html">🎰 Slots</a>
+    </div>
+
+    <h1>🧛🦇🧟 MEET THE MONSTERS 👻🧙‍♀️🧻</h1>
+    <p class="intro">"The weird, the wonderful, and the absolutely unhinged."</p>
+
+    <div class="character-grid">
+        <div class="card">
+            <h2>🧛 Bernard</h2>
+            <div class="role">QA SUPERVISOR</div>
+            <div class="realm">Realm: The Crimson Courts</div>
+            <p class="desc">800+ years old and already tired of everything. Former noble vampire who got "bored with the politics" and now reviews products professionally. Very tired, very dry, very done.</p>
+            <div class="quote">"I've seen better curses in the 15th century. 2/10."</div>
+        </div>
+
+        <div class="card">
+            <h2>🧛‍♂️ Valerus</h2>
+            <div class="role">ANTIQUE SHOP OWNER</div>
+            <div class="realm">Realm: The Crimson Courts</div>
+            <p class="desc">847 years old and thinks everything after 1800 is "tacky." Runs Cursed Curiosities & Co. — the finest haunted antiques. Snobby, superior, and secretly helpful (but never admit it).</p>
+            <div class="quote">"Your antique is TRASH. Come back in a century when you have taste."</div>
+        </div>
+
+        <div class="card">
+            <h2>🐺 The Werewolf</h2>
+            <div class="role">MONSTER MANE MASTER</div>
+            <div class="realm">Realm: The Howling Moors</div>
+            <p class="desc">Best beast barber in all six realms. Whether you need a full moon trim or a shedding survival kit, they got you. Customers leave either beautifully groomed... or in one piece.</p>
+            <div class="quote">"That'll be a nice dramatic transformation. Try not to destroy the furniture."</div>
+        </div>
+
+        <div class="card">
+            <h2>🦇 Batty Byte</h2>
+            <div class="role">PUNK INFLUENCER</div>
+            <div class="realm">Realm: The Deep Warren (sort of)</div>
+            <p class="desc">10K+ followers and climbing. Reviews products with enthusiasm that's slightly concerning. Her tagline "KA-POW! GLAMOUR!" is known throughout Umbra. She's here for the aesthetic.</p>
+            <div class="quote">"KA-POW! GLAMOUR! This is GIVING everything!"</div>
+        </div>
+
+        <div class="card">
+            <h2>🧙‍♀️ The Witch</h2>
+            <div class="role">WITCHY HAUL QUEEN</div>
+            <div class="realm">Realm: The Witch's Wilds</div>
+            <p class="desc">Every witch needs supplies, and she NEVER stops shopping. Her "Witchy Haul" series is legendary. Her cart is ALWAYS overflowing. Her familiar does the returns.</p>
+            <div class="quote">"One more hex WON'T hurt. Oh wait, that was a curse. My bad."</div>
+        </div>
+
+        <div class="card">
+            <h2>🧻 The Mummy</h2>
+            <div class="role">THE PRUDISH</div>
+            <div class="realm">Realm: Ancient Tombs</div>
+            <p class="desc">Wrapped for 5,000 years and has VERY strong opinions about keeping it that way. The concept of "exposed" horrifies her. Constantly scandalized. Always clutching wrappings in disapproval.</p>
+            <div class="quote">"GOOD HEAVENS! PUT SOME CLOTHES ON!"</div>
+        </div>
+
+        <div class="card">
+            <h2>🧟 The Zombie</h2>
+            <div class="role">THE REFORMED UNDEAD</div>
+            <div class="realm">Realm: The Faded Veil</div>
+            <p class="desc">Used to be a normal guy, got "dramatically re-killed," now trying the vegan thing. Tries so hard to be healthy, still falls apart. Holding a sad wilted lettuce leaf like it owes him money.</p>
+            <div class="quote">"Brrrrains? No... I'm doing keto now."</div>
+        </div>
+    </div>
+
+    <p style="text-align:center;margin-top:40px;color:#666;">~ More monsters emerging from the shadows... ~</p>
+</body>
+</html>
