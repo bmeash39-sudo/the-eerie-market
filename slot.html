@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Monster Slot Machine – The Eerie Market</title>
+    <style>
+        body {font-family: 'Georgia', serif; background:#0d0d0d; color:#d4d4d4; display:flex; flex-direction:column; align-items:center; padding:40px;}
+        h1 {color:#8b4513;}
+        .slot {margin:20px; font-size:2rem;}
+        button {background:#8b4513; color:#fff; border:none; padding:10px 20px; cursor:pointer; font-size:1rem; border-radius:5px;}
+        button:hover {background:#a0522d;}
+        .result {margin-top:20px; font-size:1.2rem; color:#6b8e23;}
+    </style>
+</head>
+<body>
+    <h1>🦇 Monster Slot Machine 🕸️</h1>
+    <div class="slot">🎰</div>
+    <button id="spinBtn">Spin the Reels!</button>
+    <div class="result" id="result"></div>
+    <script>
+        const prizes = [
+            "You won a 15% discount on your next purchase!",
+            "You won a FREE monster sticker!",
+            "You won a secret monster quote (share it on socials!)",
+            "Better luck next time – try again!",
+            "You unlocked a hidden behind‑the‑scenes video!"
+        ];
+        document.getElementById('spinBtn').addEventListener('click', () => {
+            const prize = prizes[Math.floor(Math.random() * prizes.length)];
+            document.getElementById('result').textContent = prize;
+        });
+    </script>
+</body>
+</html>

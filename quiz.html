@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Which Monster Are You? – The Eerie Market</title>
+    <style>
+        body {font-family:'Georgia',serif;background:#0d0d0d;color:#d4d4d4;padding:40px;max-width:600px;margin:0 auto;}
+        h1 {color:#8b4513;text-align:center;}
+        .question {margin:20px 0;}
+        .question p {font-size:1.1rem;}
+        label {display:block;margin:8px 0;cursor:pointer;}
+        button {background:#8b4513;color:#fff;border:none;padding:12px 24px;font-size:1rem;border-radius:5px;cursor:pointer;margin-top:20px;}
+        button:hover {background:#a0522d;}
+        #result {margin-top:30px;font-size:1.3rem;color:#6b8e23;text-align:center;}
+    </style>
+</head>
+<body>
+    <h1>🦇 Which Monster Are You? 👻</h1>
+    <form id="quiz">
+        <div class="question">
+            <p>1. It's Friday night. What's your vibe?</p>
+            <label><input type="radio" name="q1" value="a"> Reading alone in the dark</label>
+            <label><input type="radio" name="q1" value="b"> Networking at a cursed mixer</label>
+            <label><input type="radio" name="q1" value="c"> Taking selfies for my followers</label>
+            <label><input type="radio" name="q1" value="d"> Grooming clients at the beast salon</label>
+        </div>
+        <div class="question">
+            <p>2. Pick a favorite accessory:</p>
+            <label><input type="radio" name="q2" value="a"> A vintage red pen</label>
+            <label><input type="radio" name="q2" value="b"> A gold monocle</label>
+            <label><input type="radio" name="q2" value="c"> Pink-purple highlights</label>
+            <label><input type="radio" name="q2" value="d"> A grooming apron</label>
+        </div>
+        <div class="question">
+            <p>3. What's your ideal job?</p>
+            <label><input type="radio" name="q3" value="a"> QA Supervisor for monster products</label>
+            <label><input type="radio" name="q3" value="b"> Running an antique shop</label>
+            <label><input type="radio" name="q3" value="c"> Influencer / Content creator</label>
+            <label><input type="radio" name="q3" value="d"> Professional werewolf groomer</label>
+        </div>
+        <div class="question">
+            <p>4. Choose a snack:</p>
+            <label><input type="radio" name="q4" value="a"> Black coffee & old books</label>
+            <label><input type="radio" name="q4" value="b"> Aged wine & caviar</label>
+            <label><input type="radio" name="q4" value="c"> Energy drinks & glitter</label>
+            <label><input type="radio" name="q4" value="d"> Raw meat & marrow bones</label>
+        </div>
+        <button type="submit">Reveal My Monster!</button>
+    </form>
+    <div id="result"></div>
+    <script>
+        document.getElementById('quiz').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            let scores = { a:0, b:0, c:0, d:0 };
+            for (let v of formData.values()) scores[v]++;
+            let max = Object.keys(scores).reduce((a,b) => scores[a] > scores[b] ? a : b);
+            const monsters = {
+                a: "Bernard – The bored QA Supervisor 🧛",
+                b: "Valerus – The snobby Antique Shop Owner 🧛‍♂️",
+                c: "Batty Byte – The Punk Influencer 🦇",
+                d: "The Werewolf – Professional Beast Groomer 🐺"
+            };
+            document.getElementById('result').innerHTML = "You are: " + monsters[max];
+        });
+    </script>
+</body>
+</html>
