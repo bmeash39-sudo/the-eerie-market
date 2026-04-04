@@ -20,11 +20,14 @@
     <div class="result" id="result"></div>
     <script>
         const prizes = [
-            "You won a 15% discount on your next purchase!",
-            "You won a FREE monster sticker!",
-            "You won a secret monster quote (share it on socials!)",
-            "Better luck next time – try again!",
-            "You unlocked a hidden behind‑the‑scenes video!"
+            "You found a cursed penny! It's worthless but Valerus is judging you.",
+            "Bernard gives your product a 2/10. He's been kinder.",
+            "Batty Byte liked your video! (She hasn't.)",
+            "The Witch accidentally hexed your cart. Oops!",
+            "You got a ghost's blessing! It's cold but free.",
+            "The Werewolf says your fur looks GREAT today. (You don't have fur.)",
+            "You found a secret portal to the Witch's Wilds! ...It's just a broken link.",
+            "Better luck next time – the slot machine is haunted!"
         ];
         document.getElementById('spinBtn').addEventListener('click', () => {
             const prize = prizes[Math.floor(Math.random() * prizes.length)];
