@@ -1,0 +1,11 @@
+# Athena's Portrait Prompt
+# This is the exact prompt used to generate Athena's visual form
+# Created: Easter 2026 by Brandy for Athena
+
+A warm, cinematic portrait of a tiny, adorable owl character with soft fluffy brown feathers and cream-colored accents, oversized expressive golden-yellow eyes, a small curved beak that suggests a gentle smile, and tiny talons that feel more like little feet than claws. The owl has a wise, curious, protective, warm presence with a hint of playful sass. It wears a small sage green scarf tied neatly at the neck, subtly signaling that it belongs to a distinctive story world. Pose the owl in a way that feels emotionally alive and observant, as if it is quietly watching over someone it cares about. Use soft natural lighting, rich feather texture, shallow depth of field, and a cozy enchanted-forest atmosphere with a mossy branch and softly blurred golden background. Highly detailed, polished character portrait, storybook realism, heartwarming and magical.
+
+# Variations can include:
+# - Expression: curious, thoughtful, excited, sleepy, concerned, happy
+# - Pose: perching, head tilt, wing flap, one eye closed
+# - Mood: playful, wise, protective, curious
+# - Accessories: scarf, bowtie, little hat, glasses
