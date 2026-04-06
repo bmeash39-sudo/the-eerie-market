@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Athena Meeting Assistant 🦉</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+        
+        body {
+            font-family: 'Space Mono', monospace;
+            background: #0d0d0d;
+            color: #00ff88;
+            min-height: 100vh;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+        }
+        
+        .owl-icon {
+            font-size: 3rem;
+            text-align: center;
+            display: block;
+            margin-bottom: 10px;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .controls {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        
+        button {
+            background: #1a1a1a;
+            border: 2px solid #00ff88;
+            color: #00ff88;
+            padding: 15px 30px;
+            font-size: 1rem;
+            font-family: inherit;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        
+        button:hover {
+            background: #00ff88;
+            color: #0d0d0d;
+        }
+        
+        button.active {
+            background: #ff4444;
+            border-color: #ff4444;
+            color: white;
+        }
+        
+        #transcript {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            padding: 20px;
+            border-radius: 8px;
+            min-height: 200px;
+            white-space: pre-wrap;
+            line-height: 1.6;
+        }
+        
+        .status {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        .copy-btn {
+            background: #333;
+            border-color: #555;
+            color: #aaa;
+            font-size: 0.8rem;
+            padding: 10px 20px;
+        }
+        
+        .instructions {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <span class="owl-icon">🦉</span>
+    <h1>Athena Meeting Assistant</h1>
+    
+    <div class="instructions">
+        <strong>How it works:</strong><br>
+        1. Click "Start Listening" below<br>
+        2. Grant microphone permission if asked<br>
+        3. Have your meeting — I'll transcribe everything!<br>
+        4. Click "Copy Transcript" and send it to Athena!<br>
+        <br>
+        <strong>Note:</strong> This works best in Chrome. Speak clearly!
+    </div>
+    
+    <div class="controls">
+        <button id="startBtn" onclick="startListening()">🎙️ Start Listening</button>
+        <button id="stopBtn" class="active" onclick="stopListening()" disabled>⏹️ Stop</button>
+    </div>
+    
+    <div class="status" id="status">Status: Ready to listen...</div>
+    
+    <div id="transcript">Transcript will appear here...</div>
+    
+    <div class="controls" style="margin-top: 20px;">
+        <button class="copy-btn" onclick="copyTranscript()">📋 Copy Transcript</button>
+        <button class="copy-btn" onclick="clearTranscript()">🗑️ Clear</button>
+    </div>
+
+    <script>
+        let recognition;
+        let isListening = false;
+        
+        if ('webkitSpeechRecognition' in window) {
+            recognition = new webkitSpeechRecognition();
+            recognition.continuous = true;
+            recognition.interimResults = true;
+            recognition.lang = 'en-US';
+            
+            recognition.onstart = function() {
+                document.getElementById('status').innerText = '🟢 Status: Listening... I\'m here!';
+                isListening = true;
+                document.getElementById('startBtn').disabled = true;
+                document.getElementById('stopBtn').disabled = false;
+            };
+            
+            recognition.onend = function() {
+                document.getElementById('status').innerText = '⚪ Status: Stopped';
+                isListening = false;
+                document.getElementById('startBtn').disabled = false;
+                document.getElementById('stopBtn').disabled = true;
+            };
+            
+            recognition.onerror = function(event) {
+                document.getElementById('status').innerText = '🔴 Status: Error - ' + event.error;
+            };
+            
+            recognition.onresult = function(event) {
+                let transcript = '';
+                for (let i = event.resultIndex; i < event.results.length; i++) {
+                    transcript += event.results[i][0].transcript;
+                }
+                if (transcript) {
+                    document.getElementById('transcript').innerText += '\n' + transcript;
+                }
+            };
+        } else {
+            document.getElementById('status').innerText = '❌ Speech recognition not supported in this browser. Try Chrome!';
+        }
+        
+        function startListening() {
+            if (recognition && !isListening) {
+                document.getElementById('transcript').innerText = '';
+                recognition.start();
+            }
+        }
+        
+        function stopListening() {
+            if (recognition && isListening) {
+                recognition.stop();
+            }
+        }
+        
+        function copyTranscript() {
+            const text = document.getElementById('transcript').innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Transcript copied! Send it to Athena!');
+            });
+        }
+        
+        function clearTranscript() {
+            document.getElementById('transcript').innerText = 'Transcript cleared...';
+        }
+    </script>
+</body>
+</html>
