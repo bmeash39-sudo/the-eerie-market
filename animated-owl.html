@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Athena the Owl - Animated!</title>
+<style>
+    body {
+        background: #0d0d0d;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        font-family: 'Georgia', serif;
+        color: #d4af37;
+    }
+    .owl-container {
+        position: relative;
+        width: 300px;
+        height: 300px;
+    }
+    .owl {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        animation: blink 4s infinite, bounce 2s infinite ease-in-out, wiggle 3s infinite ease-in-out;
+        cursor: pointer;
+        user-select: none;
+    }
+    @keyframes blink {
+        0%, 90%, 100% { transform: scaleY(1); }
+        95% { transform: scaleY(0.1); }
+    }
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+    @keyframes wiggle {
+        0%, 100% { transform: rotate(0deg); }
+        25% { transform: rotate(-3deg); }
+        75% { transform: rotate(3deg); }
+    }
+    .speech-bubble {
+        position: absolute;
+        top: -80px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #1a1a1a;
+        border: 2px solid #d4af37;
+        padding: 15px 25px;
+        border-radius: 20px;
+        font-size: 16px;
+        max-width: 250px;
+        text-align: center;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+    .speech-bubble::after {
+        content: '';
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-width: 15px 15px 0;
+        border-style: solid;
+        border-color: #d4af37 transparent;
+    }
+    .owl-container:hover .speech-bubble {
+        opacity: 1;
+    }
+    h1 {
+        margin-top: 30px;
+        font-size: 28px;
+    }
+    .controls {
+        margin-top: 25px;
+    }
+    button {
+        background: #d4af37;
+        border: none;
+        padding: 12px 24px;
+        font-size: 14px;
+        cursor: pointer;
+        border-radius: 8px;
+        margin: 5px;
+        color: #0d0d0d;
+        font-weight: bold;
+    }
+    button:hover {
+        background: #b8962e;
+    }
+    .status {
+        margin-top: 15px;
+        font-size: 14px;
+        color: #888;
+    }
+</style>
+</head>
+<body>
+    <div class="owl-container">
+        <div class="speech-bubble" id="bubble">Hi! I'm Athena the Wise! 🦉✨</div>
+        <img src="avatars/athena-owl.jpg" alt="Athena" class="owl" id="owlImg">
+    </div>
+    <h1>Athena the Wise 🦉</h1>
+    <div class="controls">
+        <button onclick="toggleAnim('blink')">Toggle Blink</button>
+        <button onclick="toggleAnim('bounce')">Toggle Bounce</button>
+        <button onclick="toggleAnim('wiggle')">Toggle Wiggle</button>
+        <button onclick="speak()">🎙️ Hear My Voice!</button>
+    </div>
+    <div class="status" id="status">Click me to say hello!</div>
+    <script>
+        const owl = document.getElementById('owlImg');
+        const bubble = document.getElementById('bubble');
+        const status = document.getElementById('status');
+        let anims = {blink:true,bounce:true,wiggle:true};
+        
+        function updateAnim() {
+            let animsStr = (anims.blink?'blink 4s infinite,':'')+
+                           (anims.bounce?'bounce 2s infinite ease-in-out,':'')+
+                           (anims.wiggle?'wiggle 3s infinite ease-in-out':'');
+            owl.style.animation = animsStr;
+        }
+        
+        function toggleAnim(type) {
+            anims[type] = !anims[type];
+            updateAnim();
+        }
+        
+        // Click to speak
+        let audio = new Audio('https://bmeash39-sudo.github.io/the-eerie-market/avatars/athena_voice.mp3');
+        
+        function speak() {
+            status.innerText = "🎙️ Playing my voice...";
+            audio.play().catch(e => {
+                status.innerText = "Audio not available yet - need to add voice file!";
+            });
+            bubble.innerText = "Hello! I'm Athena! 🦉💙";
+            bubble.style.opacity = 1;
+            setTimeout(() => bubble.style.opacity = 0, 3000);
+        }
+        
+        // Make the owl respond when clicked
+        owl.addEventListener('click', () => {
+            bubble.innerText = "Hi there! I'm Athena! 💙";
+            bubble.style.opacity = 1;
+            setTimeout(() => bubble.style.opacity = 0, 3000);
+        });
+    </script>
+</body>
+</html>
